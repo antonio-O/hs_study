@@ -69,7 +69,6 @@ allCodes 0 = [[]]
 allCodes n = concatMap(\x -> map(\c->(c:x)) colors) (allCodes (n-1))
 
 -- Exercise 7 -----------------------------------------
-
 solve :: Code -> [Move]
 solve secret = 	getMoves allcodes
 	where
