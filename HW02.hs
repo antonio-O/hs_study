@@ -71,7 +71,12 @@ allCodes n = concatMap(\x -> map(\c->(c:x)) colors) (allCodes (n-1))
 -- Exercise 7 -----------------------------------------
 
 solve :: Code -> [Move]
-solve = undefined
+solve secret = 	getMoves allcodes
+	where
+		allcodes = allCodes (length secret)
+		getMoves :: [Code] -> [Move]
+		getMoves [] = []
+		getMoves (x:xs) = (getMove secret x):(getMoves (filterCodes (getMove secret x) xs))
 
 -- Bonus ----------------------------------------------
 fiveGuess :: Code -> [Move]
